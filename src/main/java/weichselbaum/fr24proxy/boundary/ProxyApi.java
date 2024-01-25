@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import weichselbaum.fr24proxy.boundary.model.Flight;
 import weichselbaum.fr24proxy.control.Fr24ProxyOrchestrator;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -20,7 +19,7 @@ public class ProxyApi {
     }
 
     @GetMapping("/fr24proxy")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<List<Flight>> getFlightsFromFeed() {
         return ResponseEntity.ok(fr24ProxyOrchestrator.fetchCurrentFr24Feed());
     }
